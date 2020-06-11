@@ -1,89 +1,90 @@
-Trivia API
+# Trivia API
 Trivia api is a web application that allows people to hold trivia on a regular basis using a webpage to manage the trivia app and play the game.
 
-The app allows one to:
+##The app allows one to:
 
 Display questions - both all questions and by category. Questions should show the question, category and difficulty rating by default and can show/hide the answer.
 Delete questions.
 Add questions and require that they include question and answer text.
 Search for questions based on a text query string.
 Play the quiz game, randomizing either all questions or within a specific category.
-Getting Started
-Installing Dependencies
+
+## Getting Started
+# Installing Dependencies
 Python 3.7
 Follow instructions to install the latest version of python for your platform in the python docs
 
-Virtual Enviornment
+## Virtual Enviornment
 Working within a virtual environment is recommended.
 
-PIP Dependencies
+## PIP Dependencies
 navigate to the /backend directory and run:
 
-pip install -r requirements.txt
+## pip install -r requirements.txt
 This will install all of the required packages in the requirements.txt file.
 
-Key Dependencies
+## Key Dependencies
 Flask is a lightweight backend microservices framework. Flask is required to handle requests and responses.
 
 SQLAlchemy is the Python SQL toolkit and ORM we'll use handle the lightweight sqlite database. You'll primarily work in app.py and can reference models.py.
 
 Flask-CORS is the extension we'll use to handle cross origin requests from our frontend server.
 
-Database Setup
+## Database Setup
 With Postgres running, restore a database using the trivia.psql file provided. From the backend folder in terminal run:
 
 psql trivia < trivia.psql
 Running the server
 From within the backend directory
 
-To run the server, execute:
+#### To run the server, execute:
 
 export FLASK_APP=flaskr
 export FLASK_ENV=development
 flask run
-Testing
-To run the tests, run
+
+# Testing
+### To run the tests, run
 
 dropdb trivia_test
 createdb trivia_test
 psql trivia_test < trivia.psql
 python test_flaskr.py
-Frontend Dependencies
+
+## Frontend Dependencies
 This project uses NPM to manage software dependencies. from the frontend directory run:
 
 npm install
-Running the Frontend in Dev Mode
+- Running the Frontend in Dev Mode
 The frontend app was built using create-react-app. In order to run the app in development mode use npm start. You can change the script in the package.json file.
 
 Open http://localhost:3000 to view it in the browser. The page will reload if you make edits.
 
 npm start
-API Reference
+
+## API Reference
 Getting Started
 Backend Base URL: http://127.0.0.1:5000/
 Frontend Base URL: http://127.0.0.1:3000/
 Authentication: Authentication or API keys are not used in the project yet.
-Error Handling
-Errors are returned in the following json format:
 
+## Error Handling
+Errors are returned in the following json format:
       {
         "success": "False",
         "error": 422,
         "message": "Unprocessable entity",
       }
-The error codes currently returned are:
-
+      
+## The error codes currently returned are:
 400 – bad request
 404 – resource not found
 422 – unprocessable
 
-Endpoints
-GET /categories
-General:
+#### Endpoints
 
-Returns all the categories.
-Sample: curl http://127.0.0.1:5000/categories
-
+# GET /categories
+** Returns all the categories.**
     {
         "categories": {
             "1": "Science", 
@@ -95,13 +96,12 @@ Sample: curl http://127.0.0.1:5000/categories
         }, 
         "success": true
     }
-GET /questions
-General:
+    
+# GET /questions
 
-Returns all questions
+** Returns all questions **
 questions are in a paginated.
 pages could be requested by a query string
-Sample: curl http://127.0.0.1:5000/questions
 
         {
     "categories": {
@@ -187,31 +187,33 @@ Sample: curl http://127.0.0.1:5000/questions
     "success": true,
     "total_questions": 19
 }
-DELETE /questions/int:id
-General:
 
-Deletes a question by id form the url parameter.
-Sample: curl http://127.0.0.1:5000/questions/6 -X DELETE
+# DELETE /questions/<int:id>
+
+**Deletes a question by id form the url parameter.**
 
         {
           "success": "True",
           "message": "Question successfully deleted"
         }
-POST /questions
-General:
+        
+# POST /questions
+** Creates a new question based on a payload.**
 
-Creates a new question based on a payload.
-Sample: curl http://127.0.0.1:5000/questions -X POST -H "Content-Type: application/json" -d '{ "question": "Frankie Fredericks represented which African country in athletics?", "answer": "Namibia", "difficulty": 3, "category": "6" }'
+{ 
+"question": "Frankie Fredericks represented which African country in athletics?", 
+"answer": "Namibia",
+"difficulty": 3,
+"category": "6" 
+}'
 
 {
   "message": "Question successfully created!",
   "success": true
 }
-POST /questions/search
-General:
-
-returns questions that has the search substring
-Sample: curl http://127.0.0.1:5000/questions/search -X POST -H "Content-Type: application/json" -d '{"searchTerm": "Anne Rice"}'
+# POST /questions/search
+** returns questions that has the search substring ** 
+ '{"searchTerm": "Anne Rice"}'
 
 {
   "questions": [
@@ -226,10 +228,9 @@ Sample: curl http://127.0.0.1:5000/questions/search -X POST -H "Content-Type: ap
   "success": true,
   "total_questions": 20
 }
-GET /categories/int:<category_id>/questions
-General:
-Gets questions by category using the id from the url parameter.
-Sample: curl http://127.0.0.1:5000/categories/1/questions
+# GET /categories/int:<category_id>/questions
+** Gets questions by category using the id from the url parameter.**
+ 
 {
   "current_category": "Science",
   "questions": [
@@ -258,12 +259,10 @@ Sample: curl http://127.0.0.1:5000/categories/1/questions
   "success": true,
   "total_questions": 3
 }
-POST /quizzes
-General
 
-Takes the category and previous questions in the request.
+# POST /quizzes
+** Takes the category and previous questions in the request.**
 Return random question not in previous questions.
-Sample: curl http://127.0.0.1:5000/quizzes -X POST -H "Content-Type: application/json" -d '{"previous_questions": [5, 9], "quiz_category": {"type": "History", "id": "4"}}'
 
 {
   "question": {
