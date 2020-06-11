@@ -215,6 +215,7 @@ pages could be requested by a query string
   "success": true
 }
 - POST /questions/search
+
 ** returns questions that has the search substring ** 
  '{"searchTerm": "Anne Rice"}'
 
