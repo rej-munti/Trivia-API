@@ -70,6 +70,7 @@ Authentication: Authentication or API keys are not used in the project yet.
 
 ## Error Handling
 Errors are returned in the following json format:
+
       {
         "success": "False",
         "error": 422,
@@ -77,9 +78,9 @@ Errors are returned in the following json format:
       }
       
 ## The error codes currently returned are:
-400 – bad request
-404 – resource not found
-422 – unprocessable
+- 400 – bad request
+- 404 – resource not found
+- 422 – unprocessable
 
 #### Endpoints
 
@@ -210,10 +211,11 @@ pages could be requested by a query string
 "category": "6" 
 }'
 
-{
-  "message": "Question successfully created!",
+
+{ 
   "success": true
 }
+
 - POST /questions/search
 
 ** returns questions that has the search substring ** 
@@ -229,6 +231,7 @@ pages could be requested by a query string
       "question": "What actor did author Anne Rice first denounce, then praise in the role of her beloved Lestat?"
     }
   ],
+  
   "success": true,
   "total_questions": 20
 }
