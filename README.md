@@ -198,6 +198,7 @@ pages could be requested by a query string
         }
         
 - POST /questions
+
 ** Creates a new question based on a payload.**
 
 { 
@@ -228,7 +229,9 @@ pages could be requested by a query string
   "success": true,
   "total_questions": 20
 }
+
 - GET /categories/int:<category_id>/questions
+
 ** Gets questions by category using the id from the url parameter.**
  
 {
@@ -261,6 +264,7 @@ pages could be requested by a query string
 }
 
 - POST /quizzes
+
 ** Takes the category and previous questions in the request.**
 Return random question not in previous questions.
 
