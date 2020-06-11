@@ -84,6 +84,7 @@ Errors are returned in the following json format:
 #### Endpoints
 
 - GET /categories
+
 ** Returns all the categories.**
     {
         "categories": {
