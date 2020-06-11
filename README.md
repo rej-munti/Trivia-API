@@ -86,6 +86,7 @@ Errors are returned in the following json format:
 - GET /categories
 
 ** Returns all the categories.**
+
     {
         "categories": {
             "1": "Science", 
