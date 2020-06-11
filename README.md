@@ -83,7 +83,7 @@ Errors are returned in the following json format:
 
 #### Endpoints
 
-# GET /categories
+- GET /categories
 ** Returns all the categories.**
     {
         "categories": {
@@ -97,7 +97,7 @@ Errors are returned in the following json format:
         "success": true
     }
     
-# GET /questions
+- GET /questions
 
 ** Returns all questions **
 questions are in a paginated.
@@ -188,7 +188,7 @@ pages could be requested by a query string
     "total_questions": 19
 }
 
-# DELETE /questions/<int:id>
+- DELETE /questions/<int:id>
 
 **Deletes a question by id form the url parameter.**
 
@@ -197,7 +197,7 @@ pages could be requested by a query string
           "message": "Question successfully deleted"
         }
         
-# POST /questions
+- POST /questions
 ** Creates a new question based on a payload.**
 
 { 
@@ -211,7 +211,7 @@ pages could be requested by a query string
   "message": "Question successfully created!",
   "success": true
 }
-# POST /questions/search
+- POST /questions/search
 ** returns questions that has the search substring ** 
  '{"searchTerm": "Anne Rice"}'
 
@@ -228,7 +228,7 @@ pages could be requested by a query string
   "success": true,
   "total_questions": 20
 }
-# GET /categories/int:<category_id>/questions
+- GET /categories/int:<category_id>/questions
 ** Gets questions by category using the id from the url parameter.**
  
 {
@@ -260,7 +260,7 @@ pages could be requested by a query string
   "total_questions": 3
 }
 
-# POST /quizzes
+- POST /quizzes
 ** Takes the category and previous questions in the request.**
 Return random question not in previous questions.
 
