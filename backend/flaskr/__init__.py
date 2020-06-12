@@ -84,7 +84,7 @@ def create_app(test_config=None):
         question = Question.query.get(question_id)
 
         if (question is None):
-                  abort(422)
+            abort(422)
 
         question.delete()
         selection = Question.query.order_by(Question.id).all()
@@ -133,19 +133,25 @@ def create_app(test_config=None):
   '''
     @app.route('/questions/search', methods=['POST'])
     def search_questions():
-        body = request.get_json()
-        search_term = body.get('searchTerm')
-        page = request.args.get('page', 1, type=int)
-        start = (page - 1) * 10
-        end = start + 10
-        questions = Question.query.filter(
-            Question.question.ilike(f'%{search_term}%')).all()
-        formatted_question = [question.format() for question in questions]
-        return jsonify({
-            'success': True,
-            'questions': formatted_question[start:end],
-            'total_questions': len(questions)
-        })
+        try:
+            body = request.get_json()
+            search_term = body.get('searchTerm')
+            page = request.args.get('page', 1, type=int)
+            start = (page - 1) * 10
+            end = start + 10
+            questions = Question.query.filter(
+                Question.question.ilike(f'%{search_term}%')).all()
+            formatted_question = [question.format() for question in questions]
+            x = len(questions)
+
+            return jsonify({
+                'success': True,
+                'questions': formatted_question[start:end],
+                'total_questions': x
+            })
+
+        except BaseException:
+            abort(404)
     '''
   Create a GET endpoint to get questions based on category.
 
