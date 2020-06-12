@@ -86,8 +86,7 @@ class TriviaTestCase(unittest.TestCase):
         if response.status_code == 422:
             self.assertEqual(data['success'], False)
         else:
-            self.assertEqual(data['deleted'], 1)
-
+            self.assertEqual(data['deleted'], 12)
 
     def test_create_new_question(self):
         """Tests question pagination success"""
@@ -123,6 +122,17 @@ class TriviaTestCase(unittest.TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertEqual(data['success'], True)
         self.assertEqual(len(data['questions']), 1)
+
+    def test_search_questions_fail(self):
+        """Test for searching for a question."""
+
+        # make request and process response
+        response = self.client().post('/questions/search', json='sdfghjmnbhyguj')
+        data = json.loads(response.data)
+
+        # Assertions
+        self.assertEqual(response.status_code, 404)
+        self.assertEqual(data['success'], False)
 
     def test_get_questions_by_category(self):
         """Test for getting questions by category."""
